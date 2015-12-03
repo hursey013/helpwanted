@@ -1,0 +1,6 @@
+{
+    "require": {
+        "knplabs/github-api": "~1.4",
+        "gilbitron/php-simplecache": "~1.4"
+    }
+}
