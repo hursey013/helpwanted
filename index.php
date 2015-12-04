@@ -83,6 +83,7 @@ if (file_exists($filename)) {
 					</div>
 					<div class="col-sm-6">
 						<form class="form-inline" method="post">
+							<input id="hashvalue" name="hashvalue" type="hidden" value="All" />
 							<div class="form-group">
 								<label for="sort">Sort by</label>
 								<select class="form-control input-sm" name="sort" id="sort">
@@ -125,6 +126,7 @@ if (file_exists($filename)) {
 						}            
 					?>
 				</div>
+				<button id="issues_more" class="btn btn-default btn-lg btn-block" style="margin:30px 0 50px 0;">Load more...</button>
 			</div>
 		</div>
 	</div>
@@ -147,7 +149,7 @@ if (file_exists($filename)) {
 					<h4 class="modal-title">About this website</h4>
 				</div>
 				<div class="modal-body">
-					<p>This website aggregates all of the issues tagged with <em>"<?php echo HW_GITHUB_LABEL; ?>"</em> from within <?php echo HW_GITHUB_USER; ?>'s <a href="<?php echo HW_GITHUB_URL; ?>">public Github repositories</a>. The "<?php echo HW_GITHUB_LABEL; ?>" tag is often used by <?php echo HW_GITHUB_USER; ?> as a means of soliciting help from individuals that are interested in contributing their projects.</p>
+					<p>This website aggregates issues tagged with <em>"<?php echo HW_GITHUB_LABEL; ?>"</em> from within <?php echo HW_GITHUB_USER; ?>'s <a href="<?php echo HW_GITHUB_URL; ?>">public Github repositories</a>. The "<?php echo HW_GITHUB_LABEL; ?>" tag is often used by <?php echo HW_GITHUB_USER; ?> as a means of soliciting help from individuals that are interested in contributing to their projects.</p>
 					<p>For more information about <?php echo HW_GITHUB_USER; ?>, please visit the <a href="<?php echo HW_WEBSITE_URL; ?>" target="_blank"><?php echo HW_WEBSITE_NAME; ?></a> website.</p>
 				</div>
 			</div>
@@ -159,6 +161,13 @@ if (file_exists($filename)) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js"></script>
 	<script type="text/javascript">
 		var repos = <?php echo $repos_json; ?>;
+		<?php
+		if((isset($_POST["hashvalue"]))){
+			echo 'var hashvalue = "' . $_POST["hashvalue"] . '";';
+		}else{
+			echo 'var hashvalue = "All";';
+		}
+		?>
 	</script>
 	<script src="scripts.js"></script>
 </body>

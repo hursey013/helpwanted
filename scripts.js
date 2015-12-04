@@ -1,12 +1,25 @@
 // Check for the hash value on load
 $(window).load(function () {
+
+	if(hashvalue) {
+		window.location.hash = hashvalue;
+	}	
+	
 	if(window.location.hash) {
 		var hash = window.location.hash;
 		$('#repo-list a[href$="' + hash + '"]').trigger("click");
 	}
+	
 });
 
 $(document).ready(function () {
+	// Pagination
+	$('#issues .list-group-item:lt(10)').show();
+	$('#issues_more').click(function () {
+		$('#issues .list-group-item').show();
+		$(this).hide();
+	});	
+	
 	// Submit form on select
 	$('#issues select').change(function() {
 			this.form.submit();
@@ -48,6 +61,8 @@ $(document).ready(function () {
     $(this).parent().addClass("active").siblings().removeClass("active");
 		// Get hash value from project link
     var filterVal = this.hash.substr(1);
+		// Update hidden field with hash value
+		$('input#hashvalue').val(filterVal);
 		// Add hash value to url
 		window.location.hash = filterVal;
     if(filterVal == 'All') {
@@ -65,6 +80,14 @@ $(document).ready(function () {
 			$('#issues blockquote').fadeIn('slow');
 			$('#issues blockquote p').html('<a href="'+repos[filterVal].url+'" target="_blank">'+filterVal+'</a> <small>'+repos[filterVal].description+'</small>');		
     }
+		// Pagination
+		var issues = $('#issues .list-group-item').not('.hidden').size();
+		if(issues > 10){
+			$('#issues .list-group-item:visible:gt(9)').hide();
+			$('#issues_more').show();
+		}else{
+			$('#issues_more').hide();
+		}
     return false;
   });      
 	
@@ -77,6 +100,7 @@ $(document).ready(function () {
 			$back_to_top.addClass('cd-fade-out');
 		}
 	});
+	
 	// Smooth scroll to top
 	$back_to_top.on('click', function(event){
 		event.preventDefault();
