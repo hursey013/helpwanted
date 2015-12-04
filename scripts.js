@@ -1,15 +1,13 @@
-// Check for the hash value on load
 $(window).load(function () {
-
+	// Add hash to url if it's lost when selecting a sort order
 	if(hashvalue) {
 		window.location.hash = hashvalue;
 	}	
-	
+	// Take hash value and select the corresponding project
 	if(window.location.hash) {
 		var hash = window.location.hash;
 		$('#repo-list a[href$="' + hash + '"]').trigger("click");
 	}
-	
 });
 
 $(document).ready(function () {
