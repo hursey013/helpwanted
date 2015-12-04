@@ -46,7 +46,6 @@ if (file_exists($filename)) {
 	$timestamp = filemtime($filename);
 }
 ?>
-<!--Test-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
