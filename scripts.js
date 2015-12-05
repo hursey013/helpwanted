@@ -1,16 +1,15 @@
-$(window).load(function () {
+$(document).ready(function () {
 	// Add hash to url if it's lost when selecting a sort order
 	if(hashvalue) {
 		window.location.hash = hashvalue;
 	}	
+	
 	// Take hash value and select the corresponding project
 	if(window.location.hash) {
 		var hash = window.location.hash;
 		$('#repo-list a[href$="' + hash + '"]').trigger("click");
 	}
-});
-
-$(document).ready(function () {
+	
 	// Pagination
 	var issuesALL = $('#issues .list-group-item').size();
 	if(issuesALL > 10){
