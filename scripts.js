@@ -14,7 +14,7 @@ $(document).ready(function () {
 	// Pagination
 	var issuesALL = $('#issues .list-group-item').size();
 	if(issuesALL > 10){
-		$('#issues .list-group-item:gt(9)').hide();
+		$('#issues .list-group-item:lt(10)').show();
 		$('#issues_more').show();
 	}else{
 		$('#issues_more').hide();

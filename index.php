@@ -125,7 +125,7 @@ if (file_exists($filename)) {
 						}            
 					?>
 				</div>
-				<button id="issues_more" class="btn btn-default btn-lg btn-block" style="margin:30px 0 50px 0;">Load more...</button>
+				<button id="issues_more" class="btn btn-default btn-lg btn-block">Load more...</button>
 			</div>
 		</div>
 	</div>
