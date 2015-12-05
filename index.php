@@ -164,7 +164,7 @@ if (file_exists($filename)) {
 		if((isset($_POST["hashvalue"]))){
 			echo 'var hashvalue = "' . $_POST["hashvalue"] . '";';
 		}else{
-			echo 'var hashvalue = "All";';
+			echo 'var hashvalue = "";';
 		}
 		?>
 	</script>

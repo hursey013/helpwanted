@@ -64,14 +64,14 @@ $(document).ready(function () {
 		// Add hash value to url
 		window.location.hash = filterVal;
     if(filterVal == 'All') {
-      $('#issues .list-group-item.hidden').fadeIn('slow').removeClass('hidden').css("display","block");
+      $('#issues .list-group-item.hidden').fadeIn('slow').removeClass('hidden');
       $('#issues blockquote').fadeOut('fast');
     } else {
       $('#issues .list-group-item').each(function() {
         if(!$(this).hasClass(filterVal)) {
           $(this).fadeOut('normal').addClass('hidden');
         } else {
-          $(this).fadeIn('slow').removeClass('hidden').css("display","block");
+          $(this).fadeIn('slow').removeClass('hidden');
         }
       });
 			// Add project description to page
