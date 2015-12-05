@@ -148,7 +148,7 @@ if (file_exists($filename)) {
 					<h4 class="modal-title">About this website</h4>
 				</div>
 				<div class="modal-body">
-					<p>This website aggregates issues tagged with <em>"<?php echo HW_GITHUB_LABEL; ?>"</em> from within <?php echo HW_GITHUB_USER; ?>'s <a href="<?php echo HW_GITHUB_URL; ?>">public Github repositories</a>. The "<?php echo HW_GITHUB_LABEL; ?>" tag is often used by <?php echo HW_GITHUB_USER; ?> as a means of soliciting help from individuals that are interested in contributing to their projects.</p>
+					<p>This website aggregates all of the issues tagged with <em>"<?php echo HW_GITHUB_LABEL; ?>"</em> from within <?php echo HW_GITHUB_USER; ?>'s <a href="<?php echo HW_GITHUB_URL; ?>">public Github repositories</a>. The "<?php echo HW_GITHUB_LABEL; ?>" tag is often used by <?php echo HW_GITHUB_USER; ?> as a means of soliciting help from individuals that are interested in contributing to their projects.</p>
 					<p>For more information about <?php echo HW_GITHUB_USER; ?>, please visit the <a href="<?php echo HW_WEBSITE_URL; ?>" target="_blank"><?php echo HW_WEBSITE_NAME; ?></a> website.</p>
 				</div>
 			</div>
