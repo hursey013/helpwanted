@@ -159,14 +159,7 @@ if (file_exists($filename)) {
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js"></script>
 	<script type="text/javascript">
-		var repos = <?php echo $repos_json; ?>;
-		<?php
-		if((isset($_POST["hashvalue"]))){
-			echo 'var hashvalue = "' . $_POST["hashvalue"] . '";';
-		}else{
-			echo 'var hashvalue = "";';
-		}
-		?>
+		var hashvalue = "<?php if(isset($_POST["hashvalue"])){ echo $_POST["hashvalue"]; } ?>";
 	</script>
 	<script src="scripts.js"></script>
 </body>

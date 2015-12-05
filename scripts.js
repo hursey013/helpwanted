@@ -12,7 +12,13 @@ $(window).load(function () {
 
 $(document).ready(function () {
 	// Pagination
-	$('#issues .list-group-item:lt(10)').show();
+	var issuesALL = $('#issues .list-group-item').size();
+	if(issuesALL > 10){
+		$('#issues .list-group-item:gt(9)').hide();
+		$('#issues_more').show();
+	}else{
+		$('#issues_more').hide();
+	}
 	$('#issues_more').click(function () {
 		$('#issues .list-group-item').show();
 		$(this).hide();
@@ -35,7 +41,6 @@ $(document).ready(function () {
   var classList = distinctList(classes);
 
   // Create project link container
-  var allItems = $('#issues .list-group-item').length;
   var repoList = '<ul class="list-unstyled" id="repo-list"></ul>';
   repoItem = '<li class="active"><a href="#All">All</a></li>';
 
@@ -50,6 +55,17 @@ $(document).ready(function () {
   // Add project container to page
   $("#repos div").append($(repoList).append(repoItem));
   
+	// Import project information
+	var repos = {};
+    $.ajax({
+    	url: "cache/repos.cache",
+    	async: false,
+    	dataType: 'json',
+    	success: function(data) {
+    		repos = data;
+    	}
+    });
+	
 	// Click actions for project list
   $('#repo-list a').click(function(e){
     e.preventDefault();
@@ -79,8 +95,8 @@ $(document).ready(function () {
 			$('#issues blockquote p').html('<a href="'+repos[filterVal].url+'" target="_blank">'+filterVal+'</a> <small>'+repos[filterVal].description+'</small>');		
     }
 		// Pagination
-		var issues = $('#issues .list-group-item').not('.hidden').size();
-		if(issues > 10){
+		var issuesVisible = $('#issues .list-group-item').not('.hidden').size();
+		if(issuesVisible > 10){
 			$('#issues .list-group-item:visible:gt(9)').hide();
 			$('#issues_more').show();
 		}else{
@@ -98,7 +114,7 @@ $(document).ready(function () {
 			$back_to_top.addClass('cd-fade-out');
 		}
 	});
-	
+
 	// Smooth scroll to top
 	$back_to_top.on('click', function(event){
 		event.preventDefault();

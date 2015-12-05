@@ -9,5 +9,7 @@ $github_cache  = new Github\HttpClient\CachedHttpClient(array(
     'cache_dir' => HW_CACHE_DIR
 ));
 $client = new Github\Client($github_cache);
-$client->authenticate(HW_GITHUB_API, null, Github\Client::AUTH_HTTP_TOKEN);
+if(HW_GITHUB_API != ''){
+  $client->authenticate(HW_GITHUB_API, null, Github\Client::AUTH_HTTP_TOKEN);
+}
 $paginator = new Github\ResultPager($client);
