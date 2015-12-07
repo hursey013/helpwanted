@@ -31,14 +31,8 @@ if($repos = $cache->get_cache('repos')){
 }	
 	
 //Build an array of issues
-if($issues = $cache->get_cache('issues_' . $sort_order)){
-	$issues = json_decode($issues, true);
-} else {
-	$q = 'user:' . HW_GITHUB_USER . ' label:"' . HW_GITHUB_LABEL . '" state:' . HW_GITHUB_STATE;
-	$issues = $paginator->fetchAll($client->api('search'), 'issues', [$q, $sort, $order]);
-	$issues_json = json_encode($issues);
-	$cache->set_cache('issues_' . $sort_order, $issues_json);
-}
+$q = 'user:' . HW_GITHUB_USER . ' label:"' . HW_GITHUB_LABEL . '" state:' . HW_GITHUB_STATE;
+$issues = $paginator->fetchAll($client->api('search'), 'issues', [$q, $sort, $order]);
 
 //Get timestamp of last cache update
 $filename = HW_CACHE_DIR . '/repos.cache';
