@@ -190,7 +190,7 @@ h5 {
 }
 
 @media only screen and (max-width: 480px) {
-  .list-inline li {
+  #issues .list-inline li {
     display: block;
     margin: 5px 0;
   }
