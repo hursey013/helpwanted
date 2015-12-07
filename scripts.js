@@ -85,6 +85,7 @@ $(document).ready(function() {
 		// Add hash value to url
 		window.location.hash = filterVal;
 		if (filterVal == 'All') {
+			$('#issues .list-group-item').show();
 			$('#issues .list-group-item.hidden').fadeIn('slow').removeClass('hidden');
 			$('#issues blockquote').fadeOut('fast');
 		} else {
