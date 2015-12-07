@@ -6,14 +6,14 @@ require_once 'functions.php';
 
 //Check if sort order is set
 if(isset($_POST["sort"])){
-  $sort_order = $_POST["sort"];
-  $sort_split= explode('_', $sort_order);
-  $sort = $sort_split[0];
-  $order = $sort_split[1];
+	$sort_order = $_POST["sort"];
+	$sort_split= explode('_', $sort_order);
+	$sort = $sort_split[0];
+	$order = $sort_split[1];
 } else {
 	$sort_order = HW_GITHUB_SORT . '_' . HW_GITHUB_ORDER;
-  $sort = HW_GITHUB_SORT;
-  $order = HW_GITHUB_ORDER;
+	$sort = HW_GITHUB_SORT;
+	$order = HW_GITHUB_ORDER;
 }
 
 //Build an array of projects

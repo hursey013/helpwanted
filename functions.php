@@ -17,7 +17,7 @@ function limit_text($text, $limit) {
 
 // Extract repo name from URL
 function get_repo_name($url) {
-  $path = parse_url($url, PHP_URL_PATH);
-  $segments = explode('/', $path);
-  return $segments[2];
+	$path = parse_url($url, PHP_URL_PATH);
+	$segments = explode('/', $path);
+	return $segments[2];
 }
