@@ -1,15 +1,17 @@
-$(document).ready(function () {
-	// Add hash to url if it's lost when selecting a sort order
-	if(hashvalue) {
-		window.location.hash = hashvalue;
-	}	
-	
+$(window).load(function() {
 	// Take hash value and select the corresponding project
 	if(window.location.hash) {
 		var hash = window.location.hash;
 		$('#repo-list a[href$="' + hash + '"]').trigger("click");
 	}
-	
+});
+
+$(document).ready(function () {
+	// Add hash to url if it's lost when selecting a sort order
+	if(hashvalue) {
+		window.location.hash = hashvalue;
+	}	
+
 	// Pagination
 	var issuesALL = $('#issues .list-group-item').size();
 	if(issuesALL > 10){
@@ -53,7 +55,7 @@ $(document).ready(function () {
 
   // Add project container to page
   $("#repos div").append($(repoList).append(repoItem));
-  
+
 	// Import project information
 	var repos = {};
     $.ajax({
@@ -93,6 +95,7 @@ $(document).ready(function () {
 			$('#issues blockquote').fadeIn('slow');
 			$('#issues blockquote p').html('<a href="'+repos[filterVal].url+'" target="_blank">'+filterVal+'</a> <small>'+repos[filterVal].description+'</small>');		
     }
+
 		// Pagination
 		var issuesVisible = $('#issues .list-group-item').not('.hidden').size();
 		if(issuesVisible > 10){
