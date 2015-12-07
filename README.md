@@ -1,2 +1,2 @@
 # helpwanted
-Frontend interface for browsing a users Github issues
+Simple front-end interface for browsing a user’s Github issues.  To use, clone the repository to PHP enabled server and download the dependencies using Composer.  Then, rename config.sample.php to config.php and provide the specific details of the user and specific tag you would like to display.  The interface also requires a writeable cache directory, which you can specify the path to in the configuration file.
