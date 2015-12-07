@@ -10,16 +10,18 @@ $(document).ready(function () {
 	// Add hash to url if it's lost when selecting a sort order
 	if(hashvalue) {
 		window.location.hash = hashvalue;
-	}	
-
-	// Pagination
-	var issuesALL = $('#issues .list-group-item').size();
-	if(issuesALL > 10){
-		$('#issues .list-group-item:lt(10)').show();
-		$('#issues_more').show();
 	}else{
-		$('#issues_more').hide();
+		// Pagination
+		var issuesALL = $('#issues .list-group-item').size();
+		if(issuesALL > 10){
+			$('#issues .list-group-item:lt(10)').show();
+			$('#issues_more').show();
+		}else{
+			$('#issues_more').hide();
+		}
 	}
+
+	// Load more results
 	$('#issues_more').click(function () {
 		$('#issues .list-group-item').show();
 		$(this).hide();
