@@ -2,7 +2,6 @@
 // Initialize SimpleCache
 $cache = new Gilbitron\Util\SimpleCache();
 $cache->cache_path = HW_CACHE_DIR . '/';
-//$cache->cache_time = HW_CACHE_TIME;
 
 // Initialize GitHub-API
 $client = new \Github\Client(
