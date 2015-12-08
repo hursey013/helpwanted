@@ -17,6 +17,7 @@ if(isset($_POST["sort"])){
 }
 
 //Build an array of projects
+$cache->cache_time = HW_REPOS_CACHE_TIME;
 if($repos = $cache->get_cache('repos')){
 	$repos_json = $repos;
 	$repos_array = json_decode($repos_json, true);
@@ -31,13 +32,14 @@ if($repos = $cache->get_cache('repos')){
 }	
 	
 //Build an array of issues
-$q = 'user:' . HW_GITHUB_USER . ' label:"' . HW_GITHUB_LABEL . '" state:' . HW_GITHUB_STATE;
-$issues = $paginator->fetchAll($client->api('search'), 'issues', [$q, $sort, $order]);
-
-//Get timestamp of last cache update
-$filename = HW_CACHE_DIR . '/repos.cache';
-if (file_exists($filename)) {
-	$timestamp = filemtime($filename);
+$cache->cache_time = HW_ISSUES_CACHE_TIME;
+if($issues = $cache->get_cache('issues_' . $sort_order)){
+	$issues = json_decode($issues, true);
+} else {
+	$q = 'user:' . HW_GITHUB_USER . ' label:"' . HW_GITHUB_LABEL . '" state:' . HW_GITHUB_STATE;
+	$issues = $paginator->fetchAll($client->api('search'), 'issues', [$q, $sort, $order]);
+	$issues_json = json_encode($issues);
+	$cache->set_cache('issues_' . $sort_order, $issues_json);
 }
 ?>
 <!DOCTYPE html>
@@ -131,7 +133,6 @@ if (file_exists($filename)) {
 				<li><a href="mailto:<?php echo HW_ADMIN_EMAIL; ?>">Contact</a></li>
 			</ul>
 			<p><em>This is not a government sponsored website.</em></p>
-			<p class="text-muted">Last updated: <em><?php echo date ("F d Y H:i:s T", $timestamp); ?></em>.</p>
 		</div>
 	</div>		
 	<div id="about" class="modal fade" tabindex="-1" role="dialog">

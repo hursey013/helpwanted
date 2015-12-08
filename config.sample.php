@@ -11,4 +11,5 @@ define("HW_WEBSITE_NAME", '18F Digital Services Delivery');
 define("HW_ADMIN_URL", 'https://github.com/myusername/helpwanted/');
 define("HW_ADMIN_EMAIL", 'myusername@gmail.com');
 define("HW_CACHE_DIR", 'cache');
-define("HW_CACHE_TIME", 7200);
+define("HW_REPOS_CACHE_TIME", 7200);
+define("HW_ISSUES_CACHE_TIME", 60);
